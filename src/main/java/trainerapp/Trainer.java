@@ -9,6 +9,10 @@ public class Trainer {
     }
 
     public String getNameAndYearOfBirth() {
-        return name + " " + yearOfBirth;
+        return name + ": " + yearOfBirth;
+    }
+
+    public void changeName(String name) {
+        this.name = name;
     }
 }

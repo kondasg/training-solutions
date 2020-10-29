@@ -14,5 +14,8 @@ public class TrainerMain {
 
         System.out.println(anotherTrainer.getName());
         System.out.println(trainer.getNameAndYearOfBirth());
+
+        anotherTrainer.changeName("Gizella");
+        System.out.println(anotherTrainer.getName());
     }
 }
