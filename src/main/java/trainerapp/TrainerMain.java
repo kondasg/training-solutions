@@ -2,15 +2,19 @@ package trainerapp;
 
 public class TrainerMain {
     public static void main(String[] args) {
-        Trainer trainer = new Trainer();
+        Trainer trainer = new Trainer("JD", 19999);
+
         System.out.println(trainer.getName());
         System.out.println(trainer.getYearOfBirth());
 
-        Trainer trainer2 = new Trainer();
+        Trainer trainer2 = new Trainer("JD2", 1111);
+
         System.out.println(trainer2.getName());
         System.out.println(trainer2.getYearOfBirth());
 
         /*
+        Trainer trainer = new Trainer();
+
         // trainer.name = "Géza"; private miatt
         trainer.setName("Géza");
         //trainer.yearOfBirth = 1980;
