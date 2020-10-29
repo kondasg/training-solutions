@@ -4,6 +4,11 @@ public class Trainer {
     private String name;
     private int yearOfBirth;
 
+    public Trainer() {
+        name = "JD";
+        yearOfBirth = 2000;
+    }
+
     public String getName() {
         return name;
     }

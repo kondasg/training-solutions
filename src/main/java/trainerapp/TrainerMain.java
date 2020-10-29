@@ -3,6 +3,14 @@ package trainerapp;
 public class TrainerMain {
     public static void main(String[] args) {
         Trainer trainer = new Trainer();
+        System.out.println(trainer.getName());
+        System.out.println(trainer.getYearOfBirth());
+
+        Trainer trainer2 = new Trainer();
+        System.out.println(trainer2.getName());
+        System.out.println(trainer2.getYearOfBirth());
+
+        /*
         // trainer.name = "Géza"; private miatt
         trainer.setName("Géza");
         //trainer.yearOfBirth = 1980;
@@ -26,5 +34,7 @@ public class TrainerMain {
 
         anotherTrainer.setName("Gizi megint");
         System.out.println(anotherTrainer.getName());
+
+         */
     }
 }
