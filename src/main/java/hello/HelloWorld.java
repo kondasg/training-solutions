@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class HelloWorld {
     public static void main(String[] args) {
+        String message = "Hello World";
+        System.out.println(message);
+
         System.out.println("Mi a neved?");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
@@ -12,7 +15,7 @@ public class HelloWorld {
         System.out.println("Mikor születtél?");
         int yearOfBirth = scanner.nextInt();
         int age = 2020 - yearOfBirth;
-        System.out.println(age + " évs vagy");
+        System.out.println(age + " éves vagy.");
 
     }
 }
