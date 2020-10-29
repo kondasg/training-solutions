@@ -1,8 +1,8 @@
 package classsctructureconstructors;
 
 public class Store {
-    String product;
-    int stock = 0;
+    private String product;
+    private int stock = 0;
 
     public Store(String product) {
         this.product = product;

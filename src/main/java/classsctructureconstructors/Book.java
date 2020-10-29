@@ -1,9 +1,9 @@
 package classsctructureconstructors;
 
 public class Book {
-    String author;
-    String title;
-    String regNumber;
+    private String author;
+    private String title;
+    private String regNumber;
 
     public Book(String author, String title) {
         this.author = author;
