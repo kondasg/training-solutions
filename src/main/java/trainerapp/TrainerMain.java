@@ -11,5 +11,7 @@ public class TrainerMain {
         Trainer anotherTrainer = new Trainer();
         anotherTrainer.name = "Gizi";
         System.out.println(anotherTrainer.name);
+
+        System.out.println(anotherTrainer.getName());
     }
 }
