@@ -13,5 +13,6 @@ public class TrainerMain {
         System.out.println(anotherTrainer.name);
 
         System.out.println(anotherTrainer.getName());
+        System.out.println(trainer.getNameAndYearOfBirth());
     }
 }

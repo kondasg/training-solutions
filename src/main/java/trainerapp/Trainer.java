@@ -7,4 +7,8 @@ public class Trainer {
     public String getName() {
         return name;
     }
+
+    public String getNameAndYearOfBirth() {
+        return name + " " + yearOfBirth;
+    }
 }
