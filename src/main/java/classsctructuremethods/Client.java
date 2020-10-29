@@ -5,8 +5,8 @@ public class Client {
     private int year;
     private String address;
 
-    public void migrate(String address) {
-
+    public void migrate(String newAddress) {
+        address = newAddress;
     }
 
     public String getName() {
