@@ -17,5 +17,8 @@ public class TrainerMain {
 
         anotherTrainer.changeName("Gizella");
         System.out.println(anotherTrainer.getName());
+
+        anotherTrainer.setName("Gizi megint");
+        System.out.println(anotherTrainer.getName());
     }
 }

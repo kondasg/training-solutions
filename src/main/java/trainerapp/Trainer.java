@@ -15,4 +15,16 @@ public class Trainer {
     public void changeName(String name) {
         this.name = name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
 }
