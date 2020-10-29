@@ -2,14 +2,14 @@ package classsctructureconstructors;
 
 public class Store {
     String product;
-    int stock;
+    int stock = 0;
 
     public Store(String product) {
         this.product = product;
     }
 
-    public void store() {
-        stock++;
+    public void store(int darab) {
+        stock+=darab;
     }
 
     public String getProduct() {
@@ -20,8 +20,8 @@ public class Store {
         this.product = product;
     }
 
-    public void dispatch() {
-        stock--;
+    public void dispatch(int darab) {
+        stock-=darab;
     }
 
     public int getStock() {
