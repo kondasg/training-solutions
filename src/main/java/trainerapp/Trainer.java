@@ -1,8 +1,8 @@
 package trainerapp;
 
 public class Trainer {
-    String name;
-    int yearOfBirth;
+    private String name;
+    private int yearOfBirth;
 
     public String getName() {
         return name;
