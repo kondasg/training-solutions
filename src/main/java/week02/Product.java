@@ -18,7 +18,7 @@ public class Product {
     }
 
     public boolean areTheyEqual(Product p) {
-        return ( this.getName().equals(p.getName()) );
+        return name.equals(p.getName());
     }
 
     public static void main(String[] args) {
