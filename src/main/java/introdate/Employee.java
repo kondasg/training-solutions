@@ -8,14 +8,10 @@ public class Employee {
     LocalDate dateOfBirth;
     LocalDateTime beginEmployment;
 
-    public Employee(String name, int year, int month, int day) {
+    public Employee(int year, int month, int day, String name) {
         this.name = name;
-        this.dateOfBirth = LocalDate.of(year,month,day);
+        this.dateOfBirth = LocalDate.of(year, month, day);
         beginEmployment = LocalDateTime.now();
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getName() {
@@ -28,5 +24,9 @@ public class Employee {
 
     public LocalDateTime getBeginEmployment() {
         return beginEmployment;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

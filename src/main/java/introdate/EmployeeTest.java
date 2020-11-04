@@ -15,7 +15,7 @@ public class EmployeeTest {
         System.out.println("Szül. nap:");
         int day = scanner.nextInt();
 
-        Employee employee = new Employee(name, year, month, day);
+        Employee employee = new Employee(year, month, day, name);
 
         // scanner.nextLine();
 
