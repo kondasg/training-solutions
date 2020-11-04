@@ -33,6 +33,6 @@ public class Performance {
     }
 
     public String getInfo() {
-        return this.getArtist() + ": " + this.getDate() + " " + this.getStartTime() + " - " + this.getEndTime();
+        return artist + ": " + date + " " + startTime + " - " + endTime;
     }
 }
