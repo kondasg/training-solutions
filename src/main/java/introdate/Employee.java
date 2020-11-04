@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Employee {
-    String name;
-    LocalDate dateOfBirth;
-    LocalDateTime beginEmployment;
+    private String name;
+    private final LocalDate dateOfBirth;
+    private final LocalDateTime beginEmployment;
 
     public Employee(int year, int month, int day, String name) {
         this.name = name;
