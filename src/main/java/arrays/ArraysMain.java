@@ -31,11 +31,22 @@ public class ArraysMain {
         return Arrays.deepToString(m);
     }
 
+    public boolean sameTempValues(double[] day, double[] anotherDay) {
+        return Arrays.equals(day, anotherDay);
+    }
+
     public static void main(String[] args) {
         ArraysMain arraysMain = new ArraysMain();
 
         System.out.println(arraysMain.numberOfDaysAsString());
         System.out.println(arraysMain.daysOfWeek());
         System.out.println(arraysMain.multiplicationTableAsString(4));
+
+        double[] day1 = {2.1, 5.6, 11.0, 16.1, 10.9};
+        double[] day2 = {2.1, 4.6, 10.1, 16.1, 10.8};
+        double[] day3 = {2.1, 5.6, 11.0, 16.1, 10.9};
+        System.out.println("day1-day2: " + arraysMain.sameTempValues(day1, day2));
+        System.out.println("day1-day3: " + arraysMain.sameTempValues(day1, day3));
+
     }
 }
