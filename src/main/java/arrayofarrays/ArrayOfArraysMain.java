@@ -1,5 +1,7 @@
 package arrayofarrays;
 
+import java.time.YearMonth;
+
 public class ArrayOfArraysMain {
 
     public int[][] multiplicationTable(int size) {
@@ -25,7 +27,7 @@ public class ArrayOfArraysMain {
     public int[][] triangularMatrix(int size) {
         int[][] t = new int[size][];
 
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < t.length; i++) {
             t[i] = new int[i + 1];
             for (int j = 0; j < i + 1; j++) {
                 t[i][j] = i;
@@ -34,11 +36,25 @@ public class ArrayOfArraysMain {
         return t;
     }
 
+    public int[][] getValues() {
+        int[][] m = new int[12][];
+        // int[] d = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+        for (int i = 0; i < m.length; i++) {
+            YearMonth yearMonthObject = YearMonth.of(2020, i+1);
+            int daysInMonth = yearMonthObject.lengthOfMonth();
+            m[i] = new int[daysInMonth];
+        }
+        return m;
+    }
+
     public static void main(String[] args) {
         ArrayOfArraysMain arrayOfArraysMain = new ArrayOfArraysMain();
 
         arrayOfArraysMain.printArrayOfArrays(arrayOfArraysMain.multiplicationTable(4));
         System.out.println();
         arrayOfArraysMain.printArrayOfArrays(arrayOfArraysMain.triangularMatrix(4));
+        System.out.println();
+        arrayOfArraysMain.printArrayOfArrays(arrayOfArraysMain.getValues());
     }
 }
