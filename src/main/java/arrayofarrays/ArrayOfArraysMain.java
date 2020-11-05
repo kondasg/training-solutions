@@ -14,9 +14,9 @@ public class ArrayOfArraysMain {
     }
 
     public void printArrayOfArrays(int[][] a) {
-        for ( int i = 0; i < a.length; i++) {
-            for ( int j = 0; j < a[i].length; j++) {
-                System.out.print(a[i][j] + " ");
+        for (int[] ints : a) {
+            for (int anInt : ints) {
+                System.out.print(anInt + " ");
             }
             System.out.println();
         }
