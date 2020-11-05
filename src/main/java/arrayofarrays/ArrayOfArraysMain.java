@@ -48,6 +48,21 @@ public class ArrayOfArraysMain {
         return m;
     }
 
+    public void bonus() {
+        int[][] b = {{1, 2, 3}, {10, 20, 30}, {100, 200, 300}};
+        for (int[] ints : b) {
+            for (Integer anInt : ints) {
+                System.out.print("_");
+                int n = anInt.toString().length();
+                for (int x = n; x < 3; x++) {
+                    System.out.print("_");
+                }
+                System.out.print(anInt);
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
         ArrayOfArraysMain arrayOfArraysMain = new ArrayOfArraysMain();
 
@@ -56,5 +71,7 @@ public class ArrayOfArraysMain {
         arrayOfArraysMain.printArrayOfArrays(arrayOfArraysMain.triangularMatrix(4));
         System.out.println();
         arrayOfArraysMain.printArrayOfArrays(arrayOfArraysMain.getValues());
+        System.out.println();
+        arrayOfArraysMain.bonus();
     }
 }
