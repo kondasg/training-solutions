@@ -2,6 +2,7 @@ package arrays;
 
 import java.time.YearMonth;
 import java.util.Arrays;
+import java.util.List;
 
 public class ArraysMain {
 
@@ -14,9 +15,15 @@ public class ArraysMain {
         return Arrays.toString(numberOfDays);
     }
 
+    public List<String> daysOfWeek() {
+        String[] days = {"hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat", "vasárnap"};
+        return Arrays.asList(days);
+    }
+
     public static void main(String[] args) {
         ArraysMain arraysMain = new ArraysMain();
 
         System.out.println(arraysMain.numberOfDaysAsString());
+        System.out.println(arraysMain.daysOfWeek());
     }
 }
