@@ -8,12 +8,12 @@ public class InputNames {
 
         String[] names = new String[5];
 
-        for (int i = 1; i <=5 ; i++) {
+        for (int i = 1; i <= 5; i++) {
             System.out.println("Kérem az " + i + ". nevet: ");
-            names[i-1] = scanner.nextLine();
+            names[i - 1] = scanner.nextLine();
         }
 
-        for (String name: names) {
+        for (String name : names) {
             System.out.println(name);
         }
     }
