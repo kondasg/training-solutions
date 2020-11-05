@@ -35,6 +35,10 @@ public class ArraysMain {
         return Arrays.equals(day, anotherDay);
     }
 
+    public boolean wonLottery(int[] a, int[] b) {
+        return false;
+    }
+
     public static void main(String[] args) {
         ArraysMain arraysMain = new ArraysMain();
 
@@ -47,6 +51,9 @@ public class ArraysMain {
         double[] day3 = {2.1, 5.6, 11.0, 16.1, 10.9};
         System.out.println("day1-day2: " + arraysMain.sameTempValues(day1, day2));
         System.out.println("day1-day3: " + arraysMain.sameTempValues(day1, day3));
+
+        int[] a = {55, 12, 69, 90, 2};
+        int[] b = {1, 90, 2, 44, 71};
 
     }
 }
