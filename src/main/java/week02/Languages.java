@@ -6,13 +6,13 @@ import java.util.List;
 public class Languages {
     public static void main(String[] args) {
 
-        List<String> langList = new ArrayList<>();
-        langList.add("Java");
-        langList.add("Python");
-        langList.add("JavaScript");
+        List<String> langs = new ArrayList<>();
+        langs.add("Java");
+        langs.add("Python");
+        langs.add("JavaScript");
 
-        for(String item: langList){
-            if (item.length()>5) {
+        for(String item: langs){
+            if (item.length() > 5) {
                 System.out.println(item);
             }
         }
