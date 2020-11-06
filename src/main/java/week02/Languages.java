@@ -1,12 +1,15 @@
 package week02;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Languages {
     public static void main(String[] args) {
-        String[] langs = {"Java", "Python", "Javascript"};
-        String[] langList = langs;
+
+        List<String> langList = new ArrayList<>();
+        langList.add("Java");
+        langList.add("Python");
+        langList.add("JavaScript");
 
         for(String item: langList){
             if (item.length()>5) {
