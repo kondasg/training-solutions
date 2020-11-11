@@ -1,3 +1,5 @@
+/* ez csak JUnit 4-el megy
+
 package introjunit;
 
 import org.junit.Test;
@@ -18,3 +20,4 @@ public class GentlemanTest {
     }
 
 }
+*/
