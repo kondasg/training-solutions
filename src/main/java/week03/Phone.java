@@ -25,4 +25,9 @@ public class Phone {
     public void setNumber(String number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        return "+36 " + '\'' + areaNumber + '\'' + number;
+    }
 }
