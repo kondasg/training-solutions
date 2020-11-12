@@ -24,7 +24,15 @@ public class DayInMonthTest {
     @Test
     public void testLeapYear() {
         assertEquals(29, new DayInMonth().numberOfDays(2012, "február"));
+    }
+
+    @Test
+    public void testLeapYear100() {
         assertEquals(28, new DayInMonth().numberOfDays(1900, "február"));
+    }
+
+    @Test
+    public void testLeapYear400() {
         assertEquals(29, new DayInMonth().numberOfDays(2000, "február"));
     }
 
