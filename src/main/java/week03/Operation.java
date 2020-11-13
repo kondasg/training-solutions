@@ -5,8 +5,8 @@ public class Operation {
     private final int rightOperand;
 
     public Operation(String s) {
-        String s1 = s.substring(0,s.indexOf("+"));
-        String s2 = s.substring(s.indexOf("+")+1);
+        String s1 = s.substring(0,s.indexOf("+")).trim();
+        String s2 = s.substring(s.indexOf("+")+1).trim();
         this.leftOperand = Integer.parseInt(s1);
         this.rightOperand = Integer.parseInt(s2);
     }
