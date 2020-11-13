@@ -16,7 +16,7 @@ public class Operation {
     }
 
     public static void main(String[] args) {
-        Operation operation = new Operation("10+11");
-        System.out.println(operation.getResult());
+ //       Operation operation = new Operation("10+11");
+ //       System.out.println(operation.getResult());
     }
 }
