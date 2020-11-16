@@ -17,4 +17,8 @@ public class NameChanger {
     public String getFullName() {
         return fullName;
     }
+
+    public boolean isTheSame(String s) {
+        return s.equals(fullName);
+    }
 }
