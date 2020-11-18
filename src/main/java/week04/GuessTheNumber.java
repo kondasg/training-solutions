@@ -12,10 +12,10 @@ public class GuessTheNumber {
         int randomInt = rnd.nextInt(100) + 1;
 
         Scanner scanner = new Scanner(System.in);
-
-        for (int i = 0; i < 6; i++) {
+        int i = 0;
+        for ( i = 0; i < 6; i++) {
             System.out.print("Gondoltam egy számra: ");
-            int tip = scanner.nextInt();
+            int tip = Integer.parseInt(scanner.nextLine());
 
             if (randomInt == tip) {
                 System.out.println("Eltaláltad!");
@@ -24,8 +24,9 @@ public class GuessTheNumber {
             else if (randomInt > tip) System.out.println("nagyobb!");
             else if (randomInt < tip) System.out.println("kisebb!");
         }
-
-
-        System.out.println("\nErre gondoltam:" + randomInt);
+        if (i == 6) {
+            System.out.println("\nElfogyott a tippelési lehetőséged!");
+            System.out.println("\nErre gondoltam:" + randomInt);
+        }
     }
 }
