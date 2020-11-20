@@ -14,4 +14,11 @@ public class CharOperationsTest {
         List<Integer> x = c.getPositionOfChar("alma", "a");
         assertEquals(2, x.size());
     }
+    @Test
+    void Test2() {
+        CharOperations c = new CharOperations();
+        List<Integer> x = c.getPositionOfChar("alma", "aaaaa");
+        assertEquals(0, x.size());
+    }
+
 }

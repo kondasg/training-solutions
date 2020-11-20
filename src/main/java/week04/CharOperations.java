@@ -7,8 +7,11 @@ public class CharOperations {
 
     public List<Integer> getPositionOfChar(String base, String part) {
         List<Integer> poz = new ArrayList<>();
-        for (int i = 0; i < base.length(); i++) {
-            if (part.equals(base.substring(i, i + 1))) {
+        int baseLength = base.length();
+        for (int i = 0; i < baseLength; i++) {
+            int endPoz = i + 1;
+            if (endPoz > baseLength) endPoz = baseLength;
+            if (part.equals(base.substring(i, endPoz))) {
                 poz.add(i);
             }
         }
@@ -17,6 +20,7 @@ public class CharOperations {
 
     public static void main(String[] args) {
         CharOperations c = new CharOperations();
-        System.out.println(c.getPositionOfChar("alma", "a"));
+        System.out.println(c.getPositionOfChar("alma", "aaaaa"));
     }
+
 }
