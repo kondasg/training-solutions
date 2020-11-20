@@ -8,7 +8,7 @@ public class CharOperations {
     public List<Integer> getPositionOfChar(String base, String part) {
         List<Integer> poz = new ArrayList<>();
         for (int i = 0; i < base.length(); i++) {
-            if ("a".equals(base.substring(i, i + 1))) {
+            if (part.equals(base.substring(i, i + 1))) {
                 poz.add(i);
             }
         }
