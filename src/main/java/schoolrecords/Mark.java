@@ -7,13 +7,17 @@ public class Mark {
     private final Tutor tutor;
 
     public Mark(MarkType markType, Subject subject, Tutor tutor) {
+        if (subject == null || tutor == null ) throw new NullPointerException("Both subject and tutor must be provided!");
         this.markType = markType;
         this.subject = subject;
         this.tutor = tutor;
     }
 
     public Mark(String markType, Subject subject, Tutor tutor) {
-//        this.markType = markType;
+        if (subject == null || tutor == null ) throw new NullPointerException("Both subject and tutor must be provided!");
+        for (MarkType item: MarkType.values()) {
+            if (item.getDescription().equals(markType)) this.markType = item;
+        }
         this.subject = subject;
         this.tutor = tutor;
     }
@@ -31,6 +35,6 @@ public class Mark {
     }
 
     public String toString() {
-        return "";
+        return markType.getDescription() + "(" + getMarkType().getValue() + ")";
     }
 }
