@@ -22,8 +22,8 @@ public class ClassRecords {
     }
 
     public boolean addStudent(Student student) { // *felvesz egy diákot az osztályba
-        for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).getName().equals(student.getName())) {
+        for (Student value : students) {
+            if (value.getName().equals(student.getName())) {
                 return false;
             }
         }
