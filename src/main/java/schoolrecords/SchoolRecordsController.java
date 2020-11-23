@@ -58,7 +58,7 @@ public class SchoolRecordsController {
                 System.out.println(classRecords.listStudentNames());
             if (numberOfMenu == 2) {
                 System.out.print("Kérem a nevet: ");
-                System.out.println(classRecords.findStudentByName(scanner.nextLine()));
+                System.out.println(classRecords.findStudentByName(scanner.nextLine()).getName());
             }
             if (numberOfMenu == 3) {
                 System.out.print("Kérem a nevet: ");
