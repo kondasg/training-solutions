@@ -6,11 +6,11 @@ public class Product {
     private final String currency;
 
     public Product(long price, String currency) {
-        int okCurrency = 0;
+        boolean okCurrency = true;
         for (Currency c: Currency.values()) {
-            if (currency.equals(c.name())) okCurrency = 1;
+            if (currency.equals(c.name())) okCurrency = false;
         }
-        if (okCurrency < 1) throw new IllegalArgumentException("Nem létező currency");
+        if (okCurrency) throw new IllegalArgumentException("Nem létező currency");
         this.price = price;
         this.currency = currency;
     }
@@ -19,7 +19,6 @@ public class Product {
 
         return price / Currency.valueOf(currency).getRate();
     }
-
 
 
 }
