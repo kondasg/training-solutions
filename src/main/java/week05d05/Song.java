@@ -7,8 +7,15 @@ public class Song {
     private final String artist;
 
     public Song(String name, long lengthInSeconds, String artist) {
-        if (isEmpty(name) || isEmpty(artist)) throw new IllegalArgumentException("Empty");
-        if (lengthInSeconds < 0) throw new IllegalArgumentException("Lenght is 0");
+        if (isEmpty(name)) {
+            throw new IllegalArgumentException("The name cannot be empty.");
+        }
+        if (isEmpty(artist)) {
+            throw new IllegalArgumentException("The artist cannot be empty.");
+        }
+        if (lengthInSeconds < 0) {
+            throw new IllegalArgumentException("The length must be greater than zero.");
+        }
         this.name = name;
         this.lengthInSeconds = lengthInSeconds;
         this.artist = artist;

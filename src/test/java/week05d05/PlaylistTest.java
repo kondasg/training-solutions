@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PlaylistTest {
 
@@ -22,6 +23,23 @@ public class PlaylistTest {
         assertEquals(2, playlist.findByLengthGreaterThan(1).size());
     }
 
+    @Test
+    void Test2() {
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> new Song("", 1, "artist") );
+        assertEquals("The name cannot be empty.", iae.getMessage());
+    }
+
+    @Test
+    void Test3() {
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> new Song("name", 1, "") );
+        assertEquals("The artist cannot be empty.", iae.getMessage());
+    }
+
+    @Test
+    void Test4() {
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> new Song("name", -12, "artist") );
+        assertEquals("The length must be greater than zero.", iae.getMessage());
+    }
 
 
 }
