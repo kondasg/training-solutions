@@ -27,5 +27,7 @@ public class TodoListMain {
         System.out.println(todoList.numberOfFinishedTodos());
         System.out.println(todoList.todosToFinish());
 
+        System.out.println(todoList);
+
     }
 }

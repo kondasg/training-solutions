@@ -19,4 +19,9 @@ public class Todo {
     public void finish() {
         this.finished = true;
     }
+
+    @Override
+    public String toString() {
+        return caption + " (befejezve: " + isFinished() + ")";
+    }
 }

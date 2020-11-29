@@ -45,4 +45,13 @@ public class TodoList {
         }
         return finish;
     }
+
+    @Override
+    public String toString() {
+        String s = "";
+        for (Todo todo: todos) {
+            s += todo.toString() + "\n";
+        }
+        return s;
+    }
 }
