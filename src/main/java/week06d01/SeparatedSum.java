@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SeparatedSum {
 
-    public String sum(String s) {
+    public ReturnSum sum(String s) {
         Scanner scanner = new Scanner(s.replace(",", ".")).useDelimiter(";");
         double sumPositive = 0.0;
         double sumNegative = 0.0;
@@ -17,7 +17,7 @@ public class SeparatedSum {
                 sumNegative += item;
             }
         }
-        return String.format("%.2f;%.2f", sumPositive, sumNegative).replace(".", ",");
+        return new ReturnSum(sumPositive, sumNegative);
     }
 
 }
