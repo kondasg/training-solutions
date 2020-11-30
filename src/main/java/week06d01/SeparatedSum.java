@@ -21,3 +21,10 @@ public class SeparatedSum {
     }
 
 }
+
+/*
+ Írj egy week06d01.SeparatedSum.sum(String s) metódust, mely kap egy String-et,
+ melyben lebegőpontos számok szerepelnek pontosvesszővel elválasztva.
+ A számoknál vessző a tizedeselválasztó. Ezt szétszedi, és összeadja külön a pozitív és külön a negatív számokat.
+ Mivel térnél vissza ebből a metódusból? Tesztesetet el ne felejtsd!
+*/
