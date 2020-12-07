@@ -42,18 +42,20 @@ public class SimpleDate {
     }
 
     private int calculateMonthLength(int year, int month) {
-        int day = 0;
         switch (month) {
-            case 1, 3, 5, 7, 8, 10, 12 -> day = 31;
-            case 4, 6, 9, 11 -> day = 30;
-            case 2 -> {
+            case 1, 3, 5, 7, 8, 10, 12 -> {
+                return 31;
+            }
+            case 4, 6, 9, 11 -> {
+                return 30;
+            }
+            default -> {
                 if (isLeapYear(year)) {
-                    day = 29;
+                    return 29;
                 } else {
-                    day = 28;
+                    return 28;
                 }
             }
         }
-        return day;
     }
 }
