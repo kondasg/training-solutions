@@ -1,6 +1,7 @@
 package week07d04;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -11,10 +12,10 @@ public class ShoppingList {
         Path file = Path.of(path);
         long sum = 0;
         try {
-            List<String> lines = Files.readAllLines(file);
+            List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
             for (String line: lines) {
-                String[] s = line.split(";");
-                sum += Long.parseLong(s[1]) * Long.parseLong(s[2]);
+                long result = calculateLine(line);
+                sum += result;
             }
         }
         catch (IOException ioe) {
@@ -24,5 +25,11 @@ public class ShoppingList {
 
     }
 
+    public long calculateLine(String line) {
+        String[] s = line.split(";");
+        long amount = Long.parseLong(s[1]);
+        long price = Long.parseLong(s[2]);
+        return amount * price;
+    }
 
 }
