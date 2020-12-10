@@ -11,9 +11,9 @@ public class ShoppingList {
         Path file = Path.of(path);
         long sum = 0;
         try {
-            List<String> employees = Files.readAllLines(file);
-            for (String employee: employees) {
-                String[] s = employee.split(";");
+            List<String> lines = Files.readAllLines(file);
+            for (String line: lines) {
+                String[] s = line.split(";");
                 sum += Long.parseLong(s[1]) * Long.parseLong(s[2]);
             }
         }
