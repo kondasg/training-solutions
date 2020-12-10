@@ -23,7 +23,7 @@ public class Series {
     }
 
     public String output(boolean up, boolean down) {
-        String text = "";
+        String text;
         if (up & down) {
             text = "vegyes";
         } else if (up) {
@@ -34,3 +34,8 @@ public class Series {
         return text;
     }
 }
+
+// Mai Senior feladat: week06d03.Series osztályban hozz létre egy calculateSeriesType metódust,
+// mely egész számok listáját kapja, és eldönti, hogy növekvő, csökkenő vagy össze-vissza sorozatról van-e szó!
+// Feltétel, hogy a bemeneti lista nem tartalmaz egymás után egyenlő értékeket.
+// Írj tesztesetet. Ha a lista üres, vagy csak egy elemből áll, dobj kivételt! Mivel térnél vissza?
