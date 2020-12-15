@@ -12,11 +12,11 @@ public class CountryStatistics {
     private final List<Country> countries = new ArrayList<>();
 
     public List<Country> getCountries() {
-        return countries;
+        return new ArrayList<>(countries); // módosíthatatlan lista
     }
 
-    public void readCountry() {
-        Path file = Path.of("countries.txt");
+    public void readCountry(String path) {
+        Path file = Path.of(path);
         try (BufferedReader reader = Files.newBufferedReader(file)) {
             String line;
             while((line = reader.readLine()) != null) {
@@ -41,7 +41,7 @@ public class CountryStatistics {
 
     public static void main(String[] args) {
         CountryStatistics countryStatistics = new CountryStatistics();
-        countryStatistics.readCountry();
+        countryStatistics.readCountry("countries.txt");
         System.out.println(countryStatistics.maxPopulaton().toString());
     }
 
