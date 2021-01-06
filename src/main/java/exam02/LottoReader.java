@@ -15,9 +15,11 @@ public class LottoReader {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
-                //int x = Integer.parseInt(data[0]);
+                for (int i=11; i<16; i++) {
+                    int num = Integer.parseInt(data[i]);
+                    numbers[num-1] += 1;
+                }
             }
-
 
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not read file", ioe);
