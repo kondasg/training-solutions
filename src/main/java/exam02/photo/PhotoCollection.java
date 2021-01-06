@@ -18,10 +18,15 @@ public class PhotoCollection {
     }
 
     public void starPhoto(String name, Quality quality) {
+        boolean noPhoto = true;
         for (Photo photo : photos) {
             if (name.equals(photo.getName())) {
                 photo.setQuality(quality);
+                noPhoto = false;
             }
+        }
+        if (noPhoto) {
+            throw new PhotoNotFoundException();
         }
     }
 
