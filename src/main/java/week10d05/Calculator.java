@@ -1,9 +1,6 @@
 package week10d05;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Calculator {
 
@@ -13,7 +10,7 @@ public class Calculator {
         }
         int sum = 0;
         Arrays.sort(arr);
-        for (int i=0; i<4; i++) {
+        for (int i = 0; i < 4; i++) {
             sum += arr[i];
         }
         System.out.println(sum);
@@ -26,18 +23,32 @@ public class Calculator {
         int min = 0;
         int max = 0;
         Arrays.sort(arr);
-        for (int i=0; i<4; i++) {
+        for (int i = 0; i < 4; i++) {
             min += arr[i];
-        }
-        int l = arr.length;
-        for (int j=l; j>l-4; j--) {
-            max += arr[j-1];
+            max += arr[arr.length - i - 1];
         }
         System.out.println(min + ", " + max);
     }
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Kérem a tömb elemeit (ha nincs több elem akkor nyomj egy ENTERT-t): ");
+        int count = 1;
+        String input;
+        List<String> arr = new ArrayList<>();
+        do {
+            System.out.print("Kérem a(z) " + count + ". számot: ");
+            input = scanner.nextLine();
+            arr.add(input);
+            count++;
+        } while (!input.isBlank());
+        arr.remove(arr.size() - 1);
+        int[] arr2 = new int[arr.size()];
+        for (int i = 0; i < arr.size(); i++) {
+            arr2[i] = Integer.parseInt(arr.get(i));
+        }
+        new Calculator().findMinMaxSum(arr2);
     }
 }
 
