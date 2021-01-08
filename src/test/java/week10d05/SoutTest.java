@@ -24,7 +24,7 @@ class SoutTest {
     }
 
     @Test
-    void givenSystemOutRedirection_whenInvokePrintln_thenOutputCaptorSuccess() {
+    void soutTest() {
         new Sout().sout();
 
         assertEquals("Sout test!", outputStreamCaptor.toString().trim());
