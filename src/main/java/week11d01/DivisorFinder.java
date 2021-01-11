@@ -13,10 +13,6 @@ public class DivisorFinder {
         return d;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new DivisorFinder().findDivisors(425));
-    }
-
 }
 
 // Mai junior/mid-level feladat:
