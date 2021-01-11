@@ -17,7 +17,7 @@ class DivisorFinderTest {
     void findDivisors2() {
         DivisorFinder divisorFinder = new DivisorFinder();
 
-        assertEquals(2, divisorFinder.findDivisors(15));
+        assertEquals(2, divisorFinder.findDivisors(150));
     }
 
     @Test

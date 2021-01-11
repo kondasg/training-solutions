@@ -6,7 +6,8 @@ public class DivisorFinder {
         String s =  Integer.toString(n);
         int d = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (n % Integer.parseInt(s.substring(i, i+1)) == 0) {
+            int digit = Integer.parseInt(s.substring(i, i+1));
+            if (digit != 0 && n % digit == 0) {
                 d++;
             }
         }
