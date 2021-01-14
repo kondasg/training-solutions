@@ -38,14 +38,21 @@ public class Activities {
     public List<Report> distancesByTypes() {
         List<Report> reports = new ArrayList<>();
         for (ActivityType activityType : ActivityType.values()) {
-            double distance = 0;
-            for (Activity activity : activities) {
-                if (activityType.equals(activity.getType())) {
-                    distance += activity.getDistance();
-                }
-            }
-            reports.add(new Report(activityType, distance));
+            reports.add(new Report(activityType, sumDistance(activityType)));
         }
         return reports;
     }
+
+    public double sumDistance(ActivityType activityType) {
+        double distance = 0;
+        for (Activity activity : activities) {
+            if (activityType.equals(activity.getType())) {
+                distance += activity.getDistance();
+            }
+        }
+        return distance;
+    }
+
+
+
 }
