@@ -9,7 +9,7 @@ public class NameLength {
         List<Integer> lengthOfNames = new ArrayList<>();
         for (String name: names) {
             if (name.startsWith("J")) {
-                int length = names.size();
+                int length = name.length();
                 if (!lengthOfNames.contains(length)) {
                     lengthOfNames.add(length);
                 }
