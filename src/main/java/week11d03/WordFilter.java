@@ -15,10 +15,6 @@ public class WordFilter {
         return result;
     }
 
-    public static void main(String[] args) {
-        List<String> s = List.of("alma", "Cica", "abc", "Csibe", "uccu");
-        System.out.println(new WordFilter().wordsWithChar(s, 'c'));
-    }
 }
 
 // Mai junior/mid-level feladat:
