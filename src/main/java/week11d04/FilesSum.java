@@ -8,29 +8,22 @@ public class FilesSum {
 
     public int sumNumbers() {
         int sum = 0;
-        String fileName;
         for (int i = 0; i < 100; i++) {
-            if (i < 10) {
-                fileName = "numbers0" + i + ".txt";
-            } else {
-                fileName = "numbers" + i + ".txt";
+            Path file = Path.of(String.format("numbers%02d.txt", i));
+            if (Files.isRegularFile(file)) {
+                sum += numberOnFile(file);
             }
-            Path file = Path.of(fileName);
-            sum += numberOnFile(file);
         }
         return sum;
     }
 
     public int numberOnFile(Path file) {
-        if (Files.isRegularFile(file)) {
-            try {
-                String content = Files.readString(file);
-                return Integer.parseInt(content);
-            } catch (IOException ioe) {
-                throw new IllegalStateException("Can not read file", ioe);
-            }
+        try {
+            String content = Files.readString(file);
+            return Integer.parseInt(content);
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can not read file", ioe);
         }
-        return 0;
     }
 
     public static void main(String[] args) {
