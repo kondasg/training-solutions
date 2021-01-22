@@ -8,7 +8,7 @@ import java.nio.file.Path;
 public class HtmlReader {
 
     public int readWord(Path file, String word) {
-        try (BufferedReader br = new BufferedReader(Files.newBufferedReader(file))) {
+        try (BufferedReader br = Files.newBufferedReader(file)) {
             String line;
             int count = 0;
             while ((line = br.readLine()) != null) {
