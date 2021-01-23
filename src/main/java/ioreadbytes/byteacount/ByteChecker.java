@@ -14,12 +14,11 @@ public class ByteChecker {
             int size;
             int sum = 0;
             while ((size = inputStream.read(bytes)) > 0) {
-                for (byte item: bytes) {
-                    if (item == 'a') {
+                for (int i = 0; i < size; i++ ) {
+                    if (bytes[i] == 'a') {
                         sum++;
                     }
                 }
-                bytes = new byte[1000];
             }
             return sum;
         }
