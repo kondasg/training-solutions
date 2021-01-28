@@ -12,22 +12,30 @@ public class TemplateMerger {
             String tempString = Files.readString(file);
             String output;
             StringBuilder sb = new StringBuilder();
-            for (Employee employee: employees) {
+            for (Employee employee : employees) {
                 output = tempString.replace("{nev}", employee.getName());
                 output = output.replace("{ev}", employee.getYearOfBirth() + "");
-                sb.append( output );
-                sb.append( "\n" );
+                sb.append(output);
+                sb.append("\n");
             }
             return sb.toString();
-        }
-        catch (IOException ioe) {
+        } catch (IOException ioe) {
             throw new IllegalStateException("Can not read file", ioe);
         }
     }
-
-    public static void main(String[] args) {
-        TemplateMerger templateMerger = new TemplateMerger();
-        List<Employee> employees = List.of(new Employee("John Doe", 11), new Employee("Jack Doe", 22));
-        System.out.println(templateMerger.merge(Path.of("temp.txt"), employees));
-    }
 }
+
+// Mai junior feladat:
+// Írj egy a TemplateMerger osztályba egy public String merge(Path file, List<Employee> employees)
+// metódust, ami felolvassa a fájlt, melynek tartalma:
+//
+// Az alkalmazott neve: {nev}, születési éve: {ev}
+//
+// Nyugodtan beolvashatod egy utasítással!
+// Majd a visszatérési értékként add vissza soronként az alkalmazottakat, abban a formátumban,
+// mint ahogy a fájlban van, azaz:
+//
+// Az alkalmazott neve: John Doe, születési éve: 1980
+// Az alkalmazott neve: Jack Doe, születési éve: 1990
+//
+// (Persze ehhez kell egy Employee osztály is a megfelelő attribútumokkal.
