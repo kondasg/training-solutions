@@ -6,7 +6,7 @@ import java.util.Set;
 public class Chars {
 
     public int countChar(String word) {
-        char[] chars = word.toCharArray();
+        char[] chars = word.toLowerCase().toCharArray();
         Set<String> result  = new HashSet<>();
         for (char c: chars ) {
             if (c >= 'a' && c <= 'z') {
