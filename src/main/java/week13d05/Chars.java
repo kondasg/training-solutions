@@ -7,16 +7,17 @@ public class Chars {
 
     public int countChar(String word) {
         char[] chars = word.toLowerCase().toCharArray();
-        Set<String> result  = new HashSet<>();
-        for (char c: chars ) {
+        Set<Character> result = new HashSet<>();
+        for (char c : chars) {
             if (c >= 'a' && c <= 'z') {
-                result.add(c+"");
+                result.add(c);
             }
         }
         return result.size();
     }
-
-    public static void main(String[] args) {
-        System.out.println(new Chars().countChar("abcdeabcde"));
-    }
 }
+
+// Junior (adatszerkezetes) feladat:
+// Írj egy metódust, amely megszámolja, hogy hány különböző betű van egy szóban.
+// A kis és nagybetűk közötti különbség nem számít!
+// A space-eket, számjegyeket, stb. ne vegye figyelembe! Csak az angol ábécé betűit!
