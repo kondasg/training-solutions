@@ -5,11 +5,11 @@ import java.util.*;
 public class BookCatalog {
 
     public Book findBookByTitleAuthor(List<Book> books, String title, String author) {
-        Book searc = new Book(title, author);
-        if (!books.contains(searc)) {
+        Book search = new Book(title, author);
+        if (!books.contains(search)) {
             return null;
         }
-        return books.get(books.indexOf(searc));
+        return books.get(books.indexOf(search));
     }
 
     public Book findBook(List<Book> books, Book book) {
@@ -20,10 +20,6 @@ public class BookCatalog {
     }
 
     public Set<Book> addBooksToSet(Book[] books) {
-        Set<Book> booksSet = new HashSet<>();
-        for (Book book : books) {
-            booksSet.add(book);
-        }
-        return booksSet;
+        return new HashSet<>(Arrays.asList(books));
     }
 }
