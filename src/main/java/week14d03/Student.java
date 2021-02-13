@@ -7,17 +7,17 @@ import java.util.Map;
 
 public class Student implements Comparable<Student> {
 
-    private final Map<String, List<Integer>> marks = new HashMap<>();
+    private Map<String, List<Integer>> marks = new HashMap<>();
     private final String name;
 
     public Student(String name) {
         this.name = name;
     }
 
-//    public Student(Student s) { // copy konstruktor
-//        this.name = s.name;
-//        this.marks = new HashMap<>(s.marks);
-//    }
+    public Student(Student s) { // copy konstruktor
+        this.name = s.name;
+        this.marks = new HashMap<>(s.marks);
+    }
 
     public Map<String, List<Integer>> getMarks() {
         return marks;

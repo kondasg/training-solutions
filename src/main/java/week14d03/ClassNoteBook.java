@@ -16,6 +16,9 @@ public class ClassNoteBook {
 
     public List<Student> sortNotebook(){
         List<Student> result = new ArrayList<>(students);
+        for (Student s : students) {        // copy konstruktorhoz tartozik, hogy ne tudjak hozzáadni az
+            result.add(new Student(s));     // eredeti listához
+        }                                   //
         Collections.sort(result);
         return result;
     }
