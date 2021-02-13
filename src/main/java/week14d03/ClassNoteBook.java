@@ -15,7 +15,7 @@ public class ClassNoteBook {
     }
 
     public List<Student> sortNotebook(){
-        List<Student> result = new ArrayList<>(students);
+        List<Student> result = new ArrayList<>();
         for (Student s : students) {        // copy konstruktorhoz tartozik, hogy ne tudjak hozzáadni az
             result.add(new Student(s));     // eredeti listához
         }                                   //

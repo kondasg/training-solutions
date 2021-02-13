@@ -38,6 +38,14 @@ public class Student implements Comparable<Student> {
     public int compareTo(Student o) {
         return name.compareTo(o.name);
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "marks=" + marks +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
 
 // Mai junior/mid-level feladat
