@@ -6,10 +6,10 @@ import java.io.IOException;
 public class Histogram {
 
     public String createHistogram(BufferedReader reader) {
-        try (BufferedReader br = reader) {
+        try {
             String line;
             StringBuilder result = new StringBuilder();
-            while ((line = br.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 for (int i = 0; i < Integer.parseInt(line); i++) {
                     result.append("*");
                 }
