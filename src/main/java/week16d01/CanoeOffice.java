@@ -8,7 +8,7 @@ public class CanoeOffice {
     private final List<CanoeRental> canoes = new ArrayList<>();
     private final static double PRICE_PER_HOUR = 5000;
 
-    public void createRental(CanoeRental canoeRental) {
+    public void addRental(CanoeRental canoeRental) {
         canoes.add(canoeRental);
     }
 
@@ -65,12 +65,12 @@ public class CanoeOffice {
     public static void main(String[] args) {
         CanoeOffice co =  new CanoeOffice();
 
-        co.createRental(new CanoeRental("1", CanoeType.RED, "1"));
-        co.createRental(new CanoeRental("2", CanoeType.BLUE, "2"));
-        co.createRental(new CanoeRental("3", CanoeType.RED, "3"));
-        co.createRental(new CanoeRental("4", CanoeType.GREEN, "4"));
-        co.createRental(new CanoeRental("5", CanoeType.BLUE, "5"));
-        co.createRental(new CanoeRental("6", CanoeType.RED, "6"));
+        co.addRental(new CanoeRental("1", CanoeType.RED, LocalDateTime.now().minusHours(1).plusMinutes(15)));
+        co.addRental(new CanoeRental("2", CanoeType.BLUE, LocalDateTime.now().minusHours(3).plusMinutes(40)));
+        co.addRental(new CanoeRental("3", CanoeType.RED, LocalDateTime.now().minusHours(1).plusMinutes(55)));
+        co.addRental(new CanoeRental("4", CanoeType.GREEN, LocalDateTime.now().minusHours(2).plusMinutes(0)));
+        co.addRental(new CanoeRental("5", CanoeType.BLUE, LocalDateTime.now().minusHours(2).plusMinutes(55)));
+        co.addRental(new CanoeRental("6", CanoeType.RED, LocalDateTime.now().minusHours(1).plusMinutes(30)));
 
         System.out.println();
         System.out.println(co.findRentalByName("1"));

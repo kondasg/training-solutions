@@ -10,10 +10,10 @@ public class CanoeRental {
     private final LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public CanoeRental(String name, CanoeType canoeType, String dateTimeString) {
+    public CanoeRental(String name, CanoeType canoeType, LocalDateTime startTime) {
         this.name = name;
         this.canoeType = canoeType;
-        this.startTime = LocalDateTime.now().minusHours(Long.parseLong(dateTimeString)).plusMinutes(Long.parseLong(dateTimeString));
+        this.startTime = startTime;
     }
 
     public String getName() {
