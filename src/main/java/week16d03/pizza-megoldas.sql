@@ -13,6 +13,7 @@ SELECT * FROM `pizza` ORDER BY `pizza_price`;
 -- Listázd ki a legdrágább pizzát!
 
 SELECT * FROM `pizza` WHERE `pizza_price`=(SELECT MAX(`pizza_price`) FROM `pizza`);
+SELECT * FROM `pizza` ORDER BY `pizza_price` DESC LIMIT 1;
 
 -- Átlagosan mekkora értékben rendeltek az emberek?
 
@@ -30,6 +31,8 @@ SELECT * FROM `pizza` WHERE `pizza_price` > 1000 OR `pizza_name` LIKE '%a%';
 
 SELECT c.customer_name, o.order_date FROM `customers` c, `order` o WHERE o.customer_id=c.`customer_id`;
 SELECT c.customer_name, o.order_date FROM `customers` c INNER JOIN `order` o ON o.customer_id=c.`customer_id`;
+
+SELECT c.customer_name, o.order_date FROM `customers` c LEFT JOIN `order` o ON o.customer_id=c.`customer_id`;
 
 -- Listázd ki a pizzarendelések dátumát és azt, hogy melyik dátumon milyen nevű pizzát rendeltek!
 
