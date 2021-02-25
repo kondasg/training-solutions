@@ -1,10 +1,8 @@
 package activitytracker;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityTrackerDao {
@@ -29,6 +27,51 @@ public class ActivityTrackerDao {
         } catch (
                 SQLException se) {
             throw new IllegalStateException("Can't insert", se);
+        }
+    }
+
+    public Activity selectActivityById(int id) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt =
+                     conn.prepareStatement("SELECT * FROM activities WHERE id = ?")) {
+            stmt.setInt(1, id);
+            return getActivity(stmt);
+        }
+        catch (SQLException se) {
+            throw new IllegalStateException("Can't SELECT'", se);
+        }
+    }
+
+    private Activity getActivity(PreparedStatement stmt) {
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return new Activity(rs.getInt(1), rs.getTimestamp(2).toLocalDateTime(),
+                        rs.getString(3), ActivityType.valueOf(rs.getString(4)));
+            }
+            throw new IllegalStateException("Can't find ID");
+        } catch (SQLException sqle) {
+            throw new IllegalArgumentException("Error by SELECT", sqle);
+        }
+    }
+
+    public List<Activity> selectActivities() {
+        try (Connection conn = dataSource.getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM activities")) {
+            List<Activity> activities = new ArrayList<>();
+            while (rs.next()) {
+                Activity activity = new Activity(
+                        rs.getInt(1),
+                        rs.getTimestamp(2).toLocalDateTime(),
+                        rs.getString(3),
+                        ActivityType.valueOf(rs.getString(4))
+                );
+                activities.add(activity);
+            }
+            return activities;
+        }
+        catch (SQLException se) {
+            throw new IllegalStateException("Can't SELECT'", se);
         }
     }
 }

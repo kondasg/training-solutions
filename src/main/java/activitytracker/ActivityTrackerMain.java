@@ -39,5 +39,7 @@ public class ActivityTrackerMain {
         ActivityTrackerDao acDao = new ActivityTrackerDao(dataSource);
 
         acDao.crateActivities(activities);
+        System.out.println(acDao.selectActivityById(3));
+        System.out.println(acDao.selectActivities());
     }
 }
