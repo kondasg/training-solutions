@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-// CREATE TABLE trans (id INT AUTO_INCREMENT, NAME VARCHAR(10), PRIMARY KEY(id));
+// CREATE TABLE trans (id INT AUTO_INCREMENT, name VARCHAR(10), PRIMARY KEY(id));
 // SSH tunelen csatlokozom MariaDB serverhez
 
 public class TransactionTest {
@@ -42,7 +42,7 @@ public class TransactionTest {
                         throw new IllegalArgumentException("Invalid name");
                     }
                     statement.setString(1, name);
-                    statement.execute();
+                    statement.executeUpdate();
                 }
                 conn.commit();
             } catch (IllegalArgumentException iae) {

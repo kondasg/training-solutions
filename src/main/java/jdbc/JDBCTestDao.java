@@ -41,7 +41,7 @@ public class JDBCTestDao {
                         throw new IllegalArgumentException("Invalid name");
                     }
                     statement.setString(1, name);
-                    statement.execute();
+                    statement.executeUpdate();
                 }
                 conn.commit();
             } catch (IllegalArgumentException iae) {
