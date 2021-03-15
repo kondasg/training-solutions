@@ -1,14 +1,14 @@
 package week12d05;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.InputStreamReader;
 
 public class HtmlReader {
 
-    public int readWord(Path file, String word) {
-        try (BufferedReader br = Files.newBufferedReader(file)) {
+    public int readWord(BufferedReader br, String word) {
+        try {
             String line;
             int count = 0;
             while ((line = br.readLine()) != null) {
@@ -23,7 +23,12 @@ public class HtmlReader {
     }
 
     public static void main(String[] args) {
-        System.out.println(new HtmlReader().readWord(Path.of("index_hu.html"), "koronavírus"));
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(HtmlReader.class.getResourceAsStream("index_hu.html")))) {
+            System.out.println(new HtmlReader().readWord(reader, "koronavírus"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
