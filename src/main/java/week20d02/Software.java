@@ -2,7 +2,7 @@ package week20d02;
 
 public abstract class Software {
 
-    protected String name;
+    private final String name;
     protected double price;
 
     public Software(String name, double price) {
@@ -18,7 +18,7 @@ public abstract class Software {
         return price;
     }
 
-    abstract void increasePrice();
+    public abstract void increasePrice();
 }
 
 // Hozzatok létre egy Software osztályt, melynek van egy name attribútuma!
