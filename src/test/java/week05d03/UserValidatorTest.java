@@ -13,17 +13,14 @@ public class UserValidatorTest {
     @Test
     void Test() {
         UserValidator userValidator = new UserValidator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> userValidator.validate(Arrays.asList(new User("John Doe", 50), new User("", 55), new User("Jack Doe", 11))) );
-        assertEquals("Üres String!", iae.getMessage());
+        assertThrows(IllegalArgumentException.class, () -> userValidator.validate(Arrays.asList(new User("John Doe", 50), new User("", 55), new User("Jack Doe", 11))) );
     }
 
     @Test
     void Test2() {
         UserValidator userValidator = new UserValidator();
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> userValidator.validate(Arrays.asList(new User("John Doe", 50), new User("Jill", 121))) );
-        assertEquals("nem megfelő age!", iae.getMessage());
+        assertThrows(IllegalArgumentException.class, () -> userValidator.validate(Arrays.asList(new User("John Doe", 50), new User("Jill", 121))) );
 
-        IllegalArgumentException iae2 = assertThrows(IllegalArgumentException.class, () -> userValidator.validate(Arrays.asList(new User("John Doe", 50), new User("Jill", -1))) );
-        assertEquals("nem megfelő age!", iae2.getMessage());
+        assertThrows(IllegalArgumentException.class, () -> userValidator.validate(Arrays.asList(new User("John Doe", 50), new User("Jill", -1))) );
     }
 }
