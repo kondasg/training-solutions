@@ -1,0 +1,7 @@
+alma fa
+és körte fa
+és 1234567890
+vowels: 17
+nonVowels: 27
+spaces: 8
+others: 21
