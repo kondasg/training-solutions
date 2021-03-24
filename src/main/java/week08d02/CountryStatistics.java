@@ -2,8 +2,7 @@ package week08d02;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,23 +14,22 @@ public class CountryStatistics {
         return new ArrayList<>(countries); // módosíthatatlan lista
     }
 
-    public void readCountry(String path) {
-        Path file = Path.of(path);
-        try (BufferedReader reader = Files.newBufferedReader(file)) {
+    public void readCountry(BufferedReader reader) {
+        try {
             String line;
-            while((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 String[] col = line.split(" ");
-                countries.add(new Country(col[0], Integer.parseInt(col[1]), Integer.parseInt(col[2]), Integer.parseInt(col[3])));
+                countries.add(new Country(col[0], Integer.parseInt(col[1]),
+                        Integer.parseInt(col[2]), Integer.parseInt(col[3])));
             }
-        }
-        catch (IOException ioe) {
+        } catch (IOException ioe) {
             throw new IllegalStateException("Can not read file", ioe);
         }
     }
 
     public Country maxPopulaton() {
         Country maxPopulation = countries.get(0);
-        for (Country country: countries) {
+        for (Country country : countries) {
             if (maxPopulation.getPopulation() < country.getPopulation()) {
                 maxPopulation = country;
             }
@@ -41,10 +39,16 @@ public class CountryStatistics {
 
     public static void main(String[] args) {
         CountryStatistics countryStatistics = new CountryStatistics();
-        countryStatistics.readCountry("countries.txt");
+
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(CountryStatistics.class.getResourceAsStream("countries.txt")))) {
+            countryStatistics.readCountry(reader);
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can't read file!", ioe);
+        }
+
         System.out.println(countryStatistics.maxPopulaton().toString());
     }
-
 
 }
 
