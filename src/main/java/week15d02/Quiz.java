@@ -2,8 +2,7 @@ package week15d02;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Quiz {
@@ -14,13 +13,14 @@ public class Quiz {
         return questions;
     }
 
-    public void loadFile(String file) {
-        try (BufferedReader reader = Files.newBufferedReader(Path.of(file))) {
+    public void loadFile(BufferedReader reader) {
+        try {
             String line;
             while ((line = reader.readLine()) != null) {
                 String line2 = reader.readLine();
                 String[] splittedLine2 = line2.split(" ");
-                questions.add(new Question(line, Integer.parseInt(splittedLine2[0]), Integer.parseInt(splittedLine2[1]), splittedLine2[2]));
+                questions.add(new Question(line, Integer.parseInt(splittedLine2[0]),
+                        Integer.parseInt(splittedLine2[1]), splittedLine2[2]));
             }
         } catch (IOException ioe) {
             throw new IllegalStateException("Can't read file", ioe);
@@ -56,8 +56,7 @@ public class Quiz {
                 List<Question> questionList = result.get(category);
                 questionList.add(question);
                 result.put(category, questionList);
-            }
-            else {
+            } else {
                 result.put(category, new ArrayList<>(List.of(question)));
             }
         }
@@ -82,8 +81,13 @@ public class Quiz {
 
     public static void main(String[] args) {
         Quiz quiz = new Quiz();
-        quiz.loadFile("kerdesek.txt");
 
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(Quiz.class.getResourceAsStream("kerdesek.txt")))) {
+            quiz.loadFile(reader);
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can't read file!", ioe);
+        }
 
         System.out.println("1. Írj egy metódust, melynek paramétere a téma és add vissza, az összes kérdést abban a témában. (Csak a kérdéseket)");
         List<String> task1 = quiz.questionsOfCategory("foldrajz");
