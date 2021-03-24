@@ -16,7 +16,7 @@ public class StateRegister {
     }
 
     public void readStatesFromFile(String stringFileName) {
-        Path file = Path.of(stringFileName);
+        Path file = Path.of("src/main/resources/ioreader/" + stringFileName);
 
         try (BufferedReader reader = Files.newBufferedReader(file)) {
             String line;
