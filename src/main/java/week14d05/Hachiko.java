@@ -19,6 +19,7 @@ public class Hachiko {
         }
         return result;
     }
+
     private void modifyMap(Map<String, Integer> result, String line, String word) {
         if (line.toLowerCase().contains(word.toLowerCase())) {
             int count = result.get(word);
@@ -65,8 +66,10 @@ public class Hachiko {
             return result;
         }
     */
+
     public static void main(String[] args) {
-        try (BufferedReader br = Files.newBufferedReader(Path.of("hachiko.srt"), Charset.forName("windows-1250"))) {
+        try (BufferedReader br = Files.newBufferedReader(Path.of("src/main/resources/week14d05/hachiko.srt"),
+                Charset.forName("windows-1250"))) {
             Hachiko hachiko = new Hachiko();
             System.out.println(hachiko.wordCounter(br, "Hachiko", "pályaudvar", "jó", "haza"));
         } catch (IOException e) {
