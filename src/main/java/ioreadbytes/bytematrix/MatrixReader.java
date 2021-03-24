@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MatrixReader {
-    
+
     private final List<byte[]> myMatrix = new ArrayList<>();
 
     public List<byte[]> getMyMatrix() {
@@ -17,14 +17,13 @@ public class MatrixReader {
     }
 
     public void readBytesAndCreateMatrix(String dataFile) {
-        try (InputStream inputStream = new BufferedInputStream(Files.newInputStream(Path.of(dataFile)))) {
+        try (InputStream inputStream = new BufferedInputStream(Files.newInputStream(
+                Path.of("src/main/resources/ioreadbytes/" + dataFile)))) {
             byte[] bytes = new byte[1000];
-            int size;
-            while ((size = inputStream.read(bytes)) > 0) {
+            while ((inputStream.read(bytes)) > 0) {
                 myMatrix.add(bytes);
             }
-        }
-        catch (IOException ioe) {
+        } catch (IOException ioe) {
             throw new IllegalStateException("Can not read file", ioe);
         }
     }
@@ -38,7 +37,7 @@ public class MatrixReader {
             }
         }
         int col = 0;
-        for (int item: numberOfOne) {
+        for (int item : numberOfOne) {
             if (item < 3) {
                 col++;
             }
