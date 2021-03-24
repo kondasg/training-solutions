@@ -2,16 +2,15 @@ package week14d02;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Delivery {
 
     private final Map<String, List<String>> shoppingList = new HashMap<>();
 
-    public void loadFile(String file) {
-        try (BufferedReader reader = Files.newBufferedReader(Path.of(file))) {
+    public void loadFile(BufferedReader reader) {
+        try {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] splittedLine = line.split(" ");
@@ -27,7 +26,7 @@ public class Delivery {
     public List<String> findId(String id) {
         if (shoppingList.containsKey(id)) {
             List<String> productList = shoppingList.get(id);
-            productList.sort(new Comparator<String>() {
+            productList.sort(new Comparator<>() {
                 @Override
                 public int compare(String o1, String o2) {
                     return o1.compareTo(o2);
@@ -73,7 +72,13 @@ public class Delivery {
 
     public static void main(String[] args) {
         Delivery delivery = new Delivery();
-        delivery.loadFile("bevasarlolista.txt");
+
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(Delivery.class.getResourceAsStream("bevasarlolista.txt")))) {
+            delivery.loadFile(reader);
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can't read file!", ioe);
+        }
         System.out.println(delivery.findId("W34111"));
         System.out.println(delivery.countProductByName("cheese"));
         System.out.println(delivery.countProductById("C123"));
