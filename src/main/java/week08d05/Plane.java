@@ -2,15 +2,14 @@ package week08d05;
 
 import java.io.*;
 
-
 public class Plane {
 
-    public int longestOcean(String path) {
+    public int longestOcean(InputStreamReader reader) {
         int max = 0;
-        try (FileInputStream fis = new FileInputStream(path)) {
+        try {
             int input;
             int counter = 0;
-            while ((input = fis.read()) != -1) {
+            while ((input = reader.read()) != -1) {
                 if (input == 48) { // input == '0'
                     counter++;
                 } else {
@@ -20,16 +19,18 @@ public class Plane {
                     counter = 0;
                 }
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
         } catch (IOException e) {
             System.out.println("IO Error");
         }
         return max;
     }
 
-
     public static void main(String[] args) {
-        System.out.println(new Plane().longestOcean("map.txt"));
+        try (InputStreamReader reader = new InputStreamReader(Plane.class.getResourceAsStream("map.txt"))) {
+            System.out.println(new Plane().longestOcean(reader));
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can't read file!", ioe);
+        }
+
     }
 }
