@@ -9,7 +9,7 @@ import java.util.List;
 public class ShoppingList {
 
     public long calculateSum(String path) {
-        Path file = Path.of(path);
+        Path file = Path.of("src/main/resources/week07d04/" + path);
         long sum = 0;
         try {
             List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
