@@ -9,7 +9,7 @@ public class FilesSum {
     public int sumNumbers() {
         int sum = 0;
         for (int i = 0; i < 100; i++) {
-            Path file = Path.of(String.format("numbers%02d.txt", i));
+            Path file = Path.of("src/main/resources/week11d04/" + String.format("numbers%02d.txt", i));
             if (Files.isRegularFile(file)) {
                 sum += numberOnFile(file);
             }
