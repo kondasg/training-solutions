@@ -21,6 +21,6 @@ public class Secret {
     }
 
     public static void main(String[] args) {
-        new Secret().readFile("secret.dat");
+        new Secret().readFile("src/main/resources/week12d04/secret.dat");
     }
 }
