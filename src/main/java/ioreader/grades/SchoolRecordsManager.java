@@ -16,7 +16,7 @@ public class SchoolRecordsManager {
     }
 
     public void readGradesFromFile(String fileName) {
-        Path file = Path.of(fileName);
+        Path file = Path.of("src/main/resources/ioreader/" + fileName);
 
         try (BufferedReader reader = Files.newBufferedReader(file)) {
             String line;
