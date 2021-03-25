@@ -16,7 +16,7 @@ public class IdManager {
     }
 
     public void readIdsFromFile(String filename) {
-        Path file = Path.of(filename);
+        Path file = Path.of("src/main/resources/ioreader/" + filename);
 
         try (BufferedReader reader = Files.newBufferedReader(file)) {
             String line;
