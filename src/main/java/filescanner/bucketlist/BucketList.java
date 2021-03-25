@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class BucketList {
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(Path.of("bucketlist.txt"))) {
+        try (Scanner scanner = new Scanner(Path.of("src/main/resources/filescanner/bucketlist.txt"))) {
             while (scanner.hasNextLine()) {
                 System.out.println(scanner.nextLine());
             }
