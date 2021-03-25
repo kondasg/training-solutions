@@ -1,7 +1,10 @@
 package week15d04;
 
+import week15d05.CovidRate;
+
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -47,7 +50,8 @@ public class CovidStat {
     }
 
     public static void main(String[] args) {
-        try (BufferedReader br = Files.newBufferedReader(Path.of("data.csv"))) {
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(CovidStat.class.getResourceAsStream("data.csv")))) {
             CovidStat covidStat = new CovidStat();
             covidStat.readFromFile(br);
             System.out.println(covidStat.findFirstThree());
