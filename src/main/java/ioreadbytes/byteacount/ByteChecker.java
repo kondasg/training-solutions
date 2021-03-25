@@ -9,7 +9,8 @@ import java.nio.file.Path;
 public class ByteChecker {
 
     public int readBytesAndFindAs(String dataFile) {
-        try (InputStream inputStream = new BufferedInputStream(Files.newInputStream(Path.of(dataFile)))) {
+        try (InputStream inputStream = new BufferedInputStream(
+                Files.newInputStream(Path.of("src/main/resources/ioreadbytes/" + dataFile)))) {
             byte[] bytes = new byte[1000];
             int size;
             int sum = 0;
