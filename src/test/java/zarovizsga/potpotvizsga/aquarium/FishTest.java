@@ -1,4 +1,4 @@
-package hu.nive.ujratervezes.zarovizsga.aquarium;
+package zarovizsga.potpotvizsga.aquarium;
 
 import org.junit.jupiter.api.Test;
 
