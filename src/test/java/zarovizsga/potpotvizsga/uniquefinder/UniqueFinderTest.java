@@ -1,4 +1,4 @@
-package hu.nive.ujratervezes.zarovizsga.uniquefinder;
+package zarovizsga.potpotvizsga.uniquefinder;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
