@@ -1,4 +1,4 @@
-package hu.nive.ujratervezes.zarovizsga.countchars;
+package zarovizsga.potpotvizsga.countchars;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
