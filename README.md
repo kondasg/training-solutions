@@ -15,7 +15,7 @@ Ez a repository tartalmazza a Junior Java backend fejlesztő tematikáját és g
 * III. projekt: Catalog ([catalog](https://github.com/kondasg/training-solutions/tree/master/src/main/java/catalog))
 * IV. projekt: Activity ([activity](https://github.com/kondasg/training-solutions/tree/master/src/main/java/activity)) 
 * V. projekt: Timesheet ([timesheet](https://github.com/kondasg/training-solutions/tree/master/src/main/java/timesheet))
-* Záró projekt: Oltásokat kezelő alkalmazás ([covid]())
+* Záró projekt: Oltásokat kezelő alkalmazás ([covid](https://github.com/kondasg/training-solutions/tree/master/src/main/java/covid))
 
 ## Napi feladatok
 
