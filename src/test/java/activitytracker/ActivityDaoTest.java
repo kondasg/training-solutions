@@ -60,4 +60,9 @@ class ActivityDaoTest {
         assertEquals(2, activities.size());
         assertEquals(ActivityType.HIKING, activities.get(1).getType());
     }
+
+    @Test
+    void getInsertId() {
+        assertEquals(1, activityDao.saveActivity(activity1));
+    }
 }

@@ -13,18 +13,32 @@ public class ActivityDao {
         this.dataSource = dataSource;
     }
 
-    public void saveActivity(Activity activity) {
+    public int saveActivity(Activity activity) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt =
                      conn.prepareStatement(
                              "INSERT INTO `activities` (`start_time`, `activity_desc`, `activity_type`) " +
-                                     "VALUES (?, ?, ?)")) {
+                                     "VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             stmt.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
             stmt.setString(2, activity.getDesc());
             stmt.setString(3, activity.getType().toString());
             stmt.executeUpdate();
+
+            return executeAndGetGeneratedKey(stmt);
         } catch (SQLException se) {
             throw new IllegalStateException("Can't INSERT", se);
+        }
+    }
+
+    private int executeAndGetGeneratedKey(PreparedStatement stmt) {
+        try (ResultSet rs = stmt.getGeneratedKeys()) {
+            if (rs.next()) {
+                return rs.getInt("id");
+            } else {
+                throw new SQLException("No key has generated");
+            }
+        } catch (SQLException se) {
+            throw new IllegalArgumentException("Error by INSERT", se);
         }
     }
 
