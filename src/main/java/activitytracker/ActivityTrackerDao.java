@@ -50,7 +50,9 @@ public class ActivityTrackerDao {
                         rs.getInt("id"),
                         rs.getTimestamp("start_time").toLocalDateTime(),
                         rs.getString("activity_desc"),
-                        ActivityType.valueOf(rs.getString("activity_type")));
+                        ActivityType.valueOf(rs.getString("activity_type")),
+                        null
+                );
             }
             throw new IllegalArgumentException("Can't find ID");
         } catch (SQLException se) {
@@ -69,7 +71,8 @@ public class ActivityTrackerDao {
                         rs.getInt("id"),
                         rs.getTimestamp("start_time").toLocalDateTime(),
                         rs.getString("activity_desc"),
-                        ActivityType.valueOf(rs.getString("activity_type"))
+                        ActivityType.valueOf(rs.getString("activity_type")),
+                        null
                 );
                 activities.add(activity);
             }

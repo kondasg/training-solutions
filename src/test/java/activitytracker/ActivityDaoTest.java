@@ -14,10 +14,25 @@ import static org.junit.jupiter.api.Assertions.*;
 class ActivityDaoTest {
 
     private ActivityDao activityDao;
+
+    private final List<TrackPoint> trackPoints1 =  List.of(
+            new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 0), 47.497913, 19.040236),
+            new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 1), 47.497912, 19.040232),
+            new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 2), 47.497913, 19.040236),
+            new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 3), 47.497913, 19.040236)
+    );
+
+    private final List<TrackPoint> trackPoints2 =  List.of(
+            new TrackPoint(LocalDateTime.of(2021, 1, 2, 11, 0, 0), 47.497913, 19.040236),
+            new TrackPoint(LocalDateTime.of(2021, 1, 2, 11, 0, 1), 47.497912, 19.040232),
+            new TrackPoint(LocalDateTime.of(2021, 1, 2, 11, 0, 2), 47.497913, 19.040236),
+            new TrackPoint(LocalDateTime.of(2021, 1, 2, 11, 0, 3), 97.497913, 19.040236)
+    );
+
     private final Activity activity1 = new Activity(
-            LocalDateTime.of(2021, 1, 1, 10, 10), "abcd", ActivityType.BIKING);
+            LocalDateTime.of(2021, 1, 1, 10, 10), "abcd", ActivityType.BIKING, trackPoints1);
     private final Activity activity2 = new Activity(
-            LocalDateTime.of(2021, 1, 2, 11, 0), "xyz", ActivityType.HIKING);
+            LocalDateTime.of(2021, 1, 2, 11, 0), "xyz", ActivityType.HIKING, trackPoints2);
 
     @BeforeEach
     void init() throws SQLException {
@@ -42,6 +57,16 @@ class ActivityDaoTest {
         activityDao.saveActivity(activity1);
         Activity activity = activityDao.findActivityById(1);
         assertEquals("abcd", activity.getDesc());
+        assertEquals(4, activity.getTrackPoints().size());
+    }
+
+    @Test
+    void saveActivityWithoutTrackPoints() {
+        activityDao.saveActivity(activity1);
+        activityDao.saveActivity(activity2);
+        Activity activity = activityDao.findActivityById(2);
+        assertEquals("xyz", activity.getDesc());
+        assertEquals(0, activity.getTrackPoints().size());
     }
 
     @Test

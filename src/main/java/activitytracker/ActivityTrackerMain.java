@@ -12,10 +12,10 @@ public class ActivityTrackerMain {
     private final static List<Activity> activities = new ArrayList<>();
 
     static {
-        Activity activity1 = new Activity(LocalDateTime.of(2021, 1, 1, 12, 10), "Miskolc - Ómassa", ActivityType.BIKING);
-        Activity activity2 = new Activity(LocalDateTime.of(2021, 1, 4, 9, 0), "Miskolc-Felsőmajláth", ActivityType.HIKING);
-        Activity activity3 = new Activity(LocalDateTime.of(2021, 1, 11, 19, 30), "DVTK", ActivityType.BASKETBALL);
-        Activity activity4 = new Activity(LocalDateTime.of(2021, 1, 20, 8, 50), "Miskolc - Bükkszentkerszt", ActivityType.BIKING);
+        Activity activity1 = new Activity(LocalDateTime.of(2021, 1, 1, 12, 10), "Miskolc - Ómassa", ActivityType.BIKING, null);
+        Activity activity2 = new Activity(LocalDateTime.of(2021, 1, 4, 9, 0), "Miskolc-Felsőmajláth", ActivityType.HIKING, null);
+        Activity activity3 = new Activity(LocalDateTime.of(2021, 1, 11, 19, 30), "DVTK", ActivityType.BASKETBALL, null);
+        Activity activity4 = new Activity(LocalDateTime.of(2021, 1, 20, 8, 50), "Miskolc - Bükkszentkerszt", ActivityType.BIKING, null);
 
         activities.add(activity1);
         activities.add(activity2);
