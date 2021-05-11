@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ActivityDaoTest {
 
     private ActivityDao activityDao;
+    private DatabaseMetadataDao databaseMetadataDao;
 
     private final List<TrackPoint> trackPoints1 = List.of(
             new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 0), 47.497913, 19.040236),
@@ -53,6 +54,7 @@ class ActivityDaoTest {
         flyway.migrate();
 
         activityDao = new ActivityDao(dataSource);
+        databaseMetadataDao = new DatabaseMetadataDao(dataSource);
     }
 
     @Test
@@ -115,5 +117,11 @@ class ActivityDaoTest {
         }
 
         assertEquals(baos.size(), imageBytes.length);
+    }
+
+    @Test
+    void getColumnsForTable() {
+        List<String> cols = databaseMetadataDao.getColumnsForTable("activities");
+        assertEquals(4, cols.size());
     }
 }
