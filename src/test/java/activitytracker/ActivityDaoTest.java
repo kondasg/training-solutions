@@ -22,8 +22,11 @@ class ActivityDaoTest {
     private final List<TrackPoint> trackPoints1 = List.of(
             new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 0), 47.497913, 19.040236),
             new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 1), 47.497912, 19.040232),
-            new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 2), 47.497913, 19.040236),
-            new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 3), 47.497913, 19.040236)
+            new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 2), 47.497911, 19.040236),
+            new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 3), 47.497910, 19.040231),
+            new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 4), 47.497909, 19.040230),
+            new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 5), 47.497980, 19.040237),
+            new TrackPoint(LocalDateTime.of(2021, 1, 1, 10, 10, 6), 47.497907, 19.040233)
     );
 
     private final List<TrackPoint> trackPoints2 = List.of(
@@ -62,7 +65,7 @@ class ActivityDaoTest {
         activityDao.saveActivity(activity1);
         Activity activity = activityDao.findActivityById(1);
         assertEquals("abcd", activity.getDesc());
-        assertEquals(4, activity.getTrackPoints().size());
+        assertEquals(7, activity.getTrackPoints().size());
     }
 
     @Test
@@ -123,5 +126,15 @@ class ActivityDaoTest {
     void getColumnsForTable() {
         List<String> cols = databaseMetadataDao.getColumnsForTable("activities");
         assertEquals(4, cols.size());
+    }
+
+    @Test
+    void someTrackPoints() {
+        activityDao.saveActivity(activity1);
+        List<TrackPoint> trackPoints = activityDao.someTrackPoints(1);
+        assertEquals(3, trackPoints.size());
+        assertEquals(19.040236, trackPoints.get(0).getLon());
+        assertEquals(19.040231, trackPoints.get(1).getLon());
+        assertEquals(47.497907, trackPoints.get(2).getLat());
     }
 }

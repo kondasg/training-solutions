@@ -15,6 +15,44 @@ public class ActivityDao {
         this.dataSource = dataSource;
     }
 
+    public List<TrackPoint> someTrackPoints(long activityId) {
+        List<TrackPoint> trackPoints = new ArrayList<>();
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt =
+                     conn.prepareStatement(
+                             "SELECT `id`, `activities_id`, `time`, `lat`, `lon` " +
+                                     "FROM `track_point` WHERE `activities_id` = ? ORDER BY `id`")) {
+            stmt.setLong(1, activityId);
+            getPosition(trackPoints, stmt);
+        } catch (SQLException se) {
+            throw new IllegalStateException("Can't SELECT track_point'", se);
+        }
+        return trackPoints;
+    }
+
+    private void getPosition(List<TrackPoint> trackPoints, PreparedStatement stmt) throws SQLException {
+        try (ResultSet rs = stmt.executeQuery()) {
+            rs.first();
+            trackPoints.add(new TrackPoint(
+                    rs.getInt("id"),
+                    rs.getTimestamp("time").toLocalDateTime(),
+                    rs.getDouble("lat"),
+                    rs.getDouble("lon")));
+            rs.last();
+            trackPoints.add(new TrackPoint(
+                    rs.getInt("id"),
+                    rs.getTimestamp("time").toLocalDateTime(),
+                    rs.getDouble("lat"),
+                    rs.getDouble("lon")));
+            rs.absolute((rs.getRow() / 2) + 1);
+            trackPoints.add(1, new TrackPoint(
+                    rs.getInt("id"),
+                    rs.getTimestamp("time").toLocalDateTime(),
+                    rs.getDouble("lat"),
+                    rs.getDouble("lon")));
+        }
+    }
+
     public void saveImageToActivity(long activityId, Image image) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt =
