@@ -1,6 +1,8 @@
 package activitytracker;
 
 import javax.sql.DataSource;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,43 @@ public class ActivityDao {
 
     public ActivityDao(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public void saveImageToActivity(long activityId, Image image) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt =
+                     conn.prepareStatement(
+                             "INSERT INTO `image` (`activities_id`, `filename`, `content`) " +
+                                     "VALUES (?, ?, ?)")) {
+            stmt.setLong(1, activityId);
+            stmt.setString(2, image.getFilename());
+            stmt.setBinaryStream(3, new ByteArrayInputStream(image.getContent()), image.getContent().length);
+            stmt.executeUpdate();
+        } catch (SQLException se) {
+            throw new IllegalStateException("Can't INSERT image", se);
+        }
+    }
+
+    public InputStream loadImageToActivity(long activityId, String filename) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT `content` FROM `image` WHERE `activities_id` = ? AND `filename` = ?")) {
+            stmt.setLong(1, activityId);
+            stmt.setString(2, filename);
+            return getBlob(stmt);
+        } catch (SQLException se) {
+            throw new IllegalStateException("Can't SELECT image", se);
+        }
+    }
+
+    private InputStream getBlob(PreparedStatement stmt) throws SQLException {
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                Blob blob = rs.getBlob("content");
+                return blob.getBinaryStream();
+            }
+            throw new IllegalStateException("Can't record");
+        }
     }
 
     public int saveActivity(Activity activity) {
@@ -26,38 +65,37 @@ public class ActivityDao {
 
             int insertId = executeAndGetGeneratedKey(stmt);
 
-            // TrackPoint t; //
-
-            try (Connection conn2 = dataSource.getConnection()) {
-                conn2.setAutoCommit(false);
-                try (PreparedStatement stmt2 = conn2.prepareStatement(
-                        "INSERT INTO `track_point` (`activities_id`, `time`, `lat`, `lon`) VALUES (?, ?, ?, ?)")) {
-                    for (TrackPoint trackPoint : activity.getTrackPoints()) {
-                        if (trackPoint.getLat() > 90 || trackPoint.getLat() < -90
-                                || trackPoint.getLon() > 180 || trackPoint.getLon() < -180) {
-                            throw new IllegalArgumentException();
-                        }
-                        stmt2.setInt(1, insertId);
-                        stmt2.setTimestamp(2, Timestamp.valueOf(trackPoint.getTime()));
-                        stmt2.setDouble(3, trackPoint.getLat());
-                        stmt2.setDouble(4, trackPoint.getLon());
-                        stmt2.executeUpdate();
-                    }
-                    conn2.commit();
-                } catch (IllegalArgumentException iae) {
-                    conn2.rollback();
-                    System.out.println("Invalid lat/lon");
-                }
-
-            } catch (SQLException se) {
-                throw new IllegalStateException("Can't INSERT track_point", se);
-            }
-
-            //
+            saveTrackPoints(activity, insertId);
 
             return insertId;
         } catch (SQLException se) {
             throw new IllegalStateException("Can't INSERT activities", se);
+        }
+    }
+
+    private void saveTrackPoints(Activity activity, int insertId) {
+        try (Connection conn2 = dataSource.getConnection()) {
+            conn2.setAutoCommit(false);
+            try (PreparedStatement stmt2 = conn2.prepareStatement(
+                    "INSERT INTO `track_point` (`activities_id`, `time`, `lat`, `lon`) VALUES (?, ?, ?, ?)")) {
+                for (TrackPoint trackPoint : activity.getTrackPoints()) {
+                    if (trackPoint.getLat() > 90 || trackPoint.getLat() < -90
+                            || trackPoint.getLon() > 180 || trackPoint.getLon() < -180) {
+                        throw new IllegalArgumentException();
+                    }
+                    stmt2.setInt(1, insertId);
+                    stmt2.setTimestamp(2, Timestamp.valueOf(trackPoint.getTime()));
+                    stmt2.setDouble(3, trackPoint.getLat());
+                    stmt2.setDouble(4, trackPoint.getLon());
+                    stmt2.executeUpdate();
+                }
+                conn2.commit();
+            } catch (IllegalArgumentException iae) {
+                conn2.rollback();
+                System.out.println("Invalid lat/lon");
+            }
+        } catch (SQLException se) {
+            throw new IllegalStateException("Can't INSERT track_point", se);
         }
     }
 
