@@ -1,4 +1,4 @@
-# Junior Java backend fejlesztő
+# Junior Java backend fejlesztő (6134005)
 
 Ez a repository tartalmazza a Junior Java backend fejlesztő tematikáját és gyakorlati feladatainak megoldásait.
 
@@ -7,6 +7,7 @@ Ez a repository tartalmazza a Junior Java backend fejlesztő tematikáját és g
 * II. részvizsga ([exam02](https://github.com/kondasg/training-solutions/tree/master/src/main/java/exam02))
 * III. részvizsga ([exam03](https://github.com/kondasg/training-solutions/tree/master/src/main/java/exam03))
 * Záróvizsga ([zarovizsga](https://github.com/kondasg/zarovizsga))
+* Képesítővizsga ([kepesitovizsga](https://github.com/kondasg/kepesitovizsga))
 
 ## Projekt feladatok
 
@@ -19,7 +20,7 @@ Ez a repository tartalmazza a Junior Java backend fejlesztő tematikáját és g
 
 ## Napi feladatok
 
-Napi konzltációk feladatai (weekxxdxx)
+Napi konzultációk feladatai (weekxxdxx)
 
 ## Tematika
 
@@ -218,7 +219,6 @@ Napi konzltációk feladatai (weekxxdxx)
 * Adatbázis metaadatok
 * Haladó ResultSet
 * Blob
-* Spring JdbcTemplate
 
 ## 
 
